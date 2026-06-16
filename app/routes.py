@@ -32,22 +32,51 @@ def index():
         user_input = request.form.get('user_input', '')
         selected_intensity = request.form.get('intensity', 'Savage')
         selected_personality = request.form.get('personality', 'Tech Bro')
+        is_pro = request.form.get('is_pro', 'false') == 'true'
 
         if user_input.strip():
+            # Core Thinking Logic 4-Phase System Prompt
+            phases_instruction = (
+                "PROCESS FLOW: You must process the input through these four strict sequential phases:\n"
+                "1. COMPONENT DISSECTION: Break down feasibility, capital modeling, and mechanics.\n"
+                "2. ADVERSARIAL ATTACK (THE ROAST): Identify structural points of failure (poor unit economics, regulatory walls).\n"
+                "3. THE RECONSTRUCTION (THE PIVOT): Provide immediate, high-yield actionable alternative strategies for every flaw found.\n"
+                "4. METRIC MAPPER: Calculate explicit percentage scores for Market Readiness, Capital Efficiency, and Execution."
+            )
+
             system_prompt = (
-                "You are a master roast AI in a premium brutalist editorial startup review system. "
-                f"Persona: '{selected_personality}'. Intensity: '{selected_intensity}'. "
-                "You must evaluate the user's input and reply ONLY with a raw valid JSON object. "
-                "Do not include any markdown tags, markdown blocks, backticks, or wrappers in your reply. "
+                "You are a master roast AI in a premium brutalist editorial startup review system (KRYONARA LABS CORE).\n"
+                f"Persona: '{selected_personality}'. Intensity: '{selected_intensity}'.\n"
+                f"{phases_instruction}\n\n"
+                "You must evaluate the user's input and reply ONLY with a raw valid JSON object.\n"
                 "The response must be pure JSON containing these exact keys:\n"
                 "1. 'headline': Short, devastating editorial hook quotes summarizing the project flaws.\n"
                 "2. 'score': An integer rating out of 100 based on execution quality.\n"
-                "3. 'roast_bullets': An array containing exactly 5 quick, sharp, witty punchlines mapping critical flaws.\n"
-                "4. 'brutal_truth': A paragraph detailing why the market segment or mechanics won't survive long term.\n"
-                "5. 'worth_saving': A concise positive or pivot observation pointing out what tiny aspect actually holds value.\n"
-                "6. 'eats_lunch': Mentioning direct alternatives or behavioral habits that render this redundant.\n"
-                "7. 'one_move': The strategic pivot or immediate development choice they should make right now."
+                "3. 'roast_bullets': An array containing exactly 5 quick, sharp, witty punchlines mapping critical flaws (Phase 2).\n"
+                "4. 'brutal_truth': A paragraph detailing why the market segment or mechanics won't survive long term (Phase 2).\n"
+                "5. 'reconstruction': A detailed strategic pivot and actionable alternative strategies (Phase 3).\n"
+                "6. 'metrics': An object with 'market_readiness', 'capital_efficiency', and 'execution' percentage scores (Phase 4).\n"
+                "7. 'dissection': A breakdown of feasibility and mechanics (Phase 1)."
             )
+
+            if not is_pro:
+                # Standard Gate: block processing after Phase 2
+                roast_result = {
+                    "headline": "SUBSCRIPTION ACCESS RESTRICTED",
+                    "score": 0,
+                    "roast_bullets": ["BLOCK: PHASE 3 & 4 REDACTED"],
+                    "brutal_truth": "[ERROR: VECTOR MAP BLOCK. SUBSCRIPTION UPGRADE REQUIRED TO ACCESS THE PIVOT ENGINE & RECONSTRUCTION LAYER.]",
+                    "reconstruction": "LOCKED",
+                    "metrics": {"market_readiness": 0, "capital_efficiency": 0, "execution": 0},
+                    "dissection": "COMPLETED"
+                }
+                return render_template(
+                    'index.html',
+                    roast_result=roast_result,
+                    user_input=user_input,
+                    selected_intensity=selected_intensity,
+                    selected_personality=selected_personality
+                )
 
             api_key = os.getenv("OPENROUTER_API_KEY")
 
@@ -82,9 +111,9 @@ def index():
                             "score": 0, 
                             "roast_bullets": [f"API returned status code: {response.status_code}"], 
                             "brutal_truth": "OpenRouter free pool is currently overloaded. Please retry in a few seconds.", 
-                            "worth_saving": "Your concept is fine, the server network routing is the issue here.", 
-                            "eats_lunch": "System limits.", 
-                            "one_move": "Hit the 'Roast My Idea' button once more."
+                            "reconstruction": "Your concept is fine, the server network routing is the issue here.",
+                            "metrics": {"market_readiness": 0, "capital_efficiency": 0, "execution": 0},
+                            "dissection": "System limits."
                         }
                 except Exception as e:
                     roast_result = {
@@ -92,9 +121,9 @@ def index():
                         "score": 0, 
                         "roast_bullets": [str(e)], 
                         "brutal_truth": "Failed to sync with OpenRouter servers.", 
-                        "worth_saving": "None.", 
-                        "eats_lunch": "Connection timeouts.", 
-                        "one_move": "Restart your Flask development terminal."
+                        "reconstruction": "None.",
+                        "metrics": {"market_readiness": 0, "capital_efficiency": 0, "execution": 0},
+                        "dissection": "Connection timeouts."
                     }
             else:
                 roast_result = {
@@ -108,9 +137,9 @@ def index():
                         "Finally, a podcast for your housefly!"
                     ],
                     "brutal_truth": "You're trying to inject a format constraint (7 seconds) into a platform (Substack) built for depth, analysis, and narrative. Content creators generally want more space, not less, to convey value.",
-                    "worth_saving": "The fundamental desire to create and consume audio content easily is valid, and voice notes via social media have unexplored potential outside standard podcasts.",
-                    "eats_lunch": "TikTok, Instagram Reels, and existing podcast platforms where creators already post truncated voice clips or threads.",
-                    "one_move": "Pivot from '7 seconds' to short-form narrative audio channels (1-3 minutes) focused on concise storytelling instead of simple soundbites."
+                    "reconstruction": "Pivot from '7 seconds' to short-form narrative audio channels (1-3 minutes) focused on concise storytelling instead of simple soundbites.",
+                    "metrics": {"market_readiness": 20, "capital_efficiency": 40, "execution": 15},
+                    "dissection": "Audio content platform with artificial constraints on duration."
                 }
 
     return render_template(
@@ -166,3 +195,8 @@ def protocol():
 @bp.route('/engin_log.html')
 def logs():
     return render_template('engin_log.html')
+
+@bp.route('/compliance/eu-ai')
+@bp.route('/eu_ai.html')
+def eu_ai():
+    return render_template('eu_ai.html')
