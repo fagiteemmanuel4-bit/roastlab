@@ -38,10 +38,10 @@ def index():
             # Core Thinking Logic 4-Phase System Prompt
             phases_instruction = (
                 "PROCESS FLOW: You must process the input through these four strict sequential phases:\n"
-                "1. COMPONENT DISSECTION: Break down feasibility, capital modeling, and mechanics.\n"
-                "2. ADVERSARIAL ATTACK (THE ROAST): Identify structural points of failure (poor unit economics, regulatory walls).\n"
-                "3. THE RECONSTRUCTION (THE PIVOT): Provide immediate, high-yield actionable alternative strategies for every flaw found.\n"
-                "4. METRIC MAPPER: Calculate explicit percentage scores for Market Readiness, Capital Efficiency, and Execution."
+                "1. 1. CONCEPT BREAKDOWN: Break down feasibility, capital modeling, and mechanics.\n"
+                "2. 2. CRITICAL ANALYSIS: Identify structural points of failure (poor unit economics, regulatory walls).\n"
+                "3. 3. STRATEGIC RECONSTRUCTION: Provide immediate, high-yield actionable alternative strategies for every flaw found.\n"
+                "4. 4. PERFORMANCE METRICS: Calculate explicit percentage scores for Market Readiness, Capital Efficiency, and Execution."
             )
 
             system_prompt = (

@@ -1,31 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Enterprise Pipeline Protocols // RoastLab</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@900&family=JetBrains+Mono:wght@400;700&display=swap">
-    <style>
-        body { background-color: #0c0806; color: #f7f5ec; font-family: 'JetBrains Mono', monospace; }
-        .serif { font-family: 'Fraunces', serif; }
-        .text-acid { color: #73d41d; }
-    </style>
-</head>
-<body class="p-8 md:p-24 max-w-4xl mx-auto">
-    <header class="mb-16 border-b border-zinc-800 pb-8">
-        <h1 class="serif text-6xl font-black text-white mb-4">Enterprise Pipeline Protocols</h1>
-        <p class="text-acid uppercase tracking-widest font-bold text-xs">// INSTITUTIONAL DEAL-FLOW PARSING</p>
-    </header>
-    <main class="space-y-8 text-lg leading-relaxed">
-        <p>High-throughput API parameters for institutional investment funds, VCs, and accelerator deal-flow parsing matrices.</p>
-        <p>RoastLab provides a robust interface for institutional partners to ingest hundreds of startup frameworks simultaneously, applying our adversarial logic at scale to filter noise and identify high-yield execution potential.</p>
-        <div class="bg-zinc-900 border border-zinc-800 p-8 space-y-4">
-            <h3 class="text-white font-bold uppercase tracking-widest text-sm">Institutional Contact</h3>
-            <p class="text-acid">enterprise@kryonara.com</p>
+{% extends "external_base.html" %}
+{% block title %}Enterprise Pricing{% endblock %}
+{% block content %}
+<h1 class="serif text-6xl font-black mb-8 border-b-4 border-black pb-4 text-black">Enterprise Solutions</h1>
+<div class="space-y-8 text-lg leading-relaxed text-[#534c44]">
+    <p>For institutional investment funds, VCs, and startup accelerators, RoastLab offers high-throughput API access and institutional deal-flow parsing matrices.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
+        <div class="p-8 border-2 border-black bg-white brutal-shadow">
+            <h3 class="font-bold text-black uppercase tracking-widest text-sm mb-4">Standard Node</h3>
+            <p class="text-xs">Individual access to core phases for independent founders.</p>
         </div>
-    </main>
-    <footer class="mt-24 pt-8 border-t border-zinc-800 text-[10px] text-zinc-600">
-        KRYONARA LABS // ENTERPRISE_CORE_v1.0
-    </footer>
-</body>
-</html>
+        <div class="p-8 border-2 border-black bg-[#73d41d] brutal-shadow">
+            <h3 class="font-bold text-black uppercase tracking-widest text-sm mb-4">Institutional Core</h3>
+            <p class="text-xs">Bulk processing and integration for portfolio managers.</p>
+        </div>
+    </div>
+    <p class="mt-8">Contact our strategic team for institutional deployment: <span class="font-bold text-black">enterprise@kryonara.com</span></p>
+</div>
+{% endblock %}

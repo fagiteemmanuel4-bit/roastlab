@@ -1,27 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Cryptographic Log Ledger // RoastLab</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@900&family=JetBrains+Mono:wght@400;700&display=swap">
-    <style>
-        body { background-color: #0c0806; color: #f7f5ec; font-family: 'JetBrains Mono', monospace; }
-        .serif { font-family: 'Fraunces', serif; }
-        .text-acid { color: #73d41d; }
-    </style>
-</head>
-<body class="p-8 md:p-24 max-w-4xl mx-auto">
-    <header class="mb-16 border-b border-zinc-800 pb-8">
-        <h1 class="serif text-6xl font-black text-white mb-4">Cryptographic Log Ledger</h1>
-        <p class="text-acid uppercase tracking-widest font-bold text-xs">// ZERO-KNOWLEDGE OPERATIONAL MECHANICS</p>
-    </header>
-    <main class="space-y-8 text-lg leading-relaxed">
-        <p>At RoastLab, privacy is not a feature; it is the foundation. We employ zero-knowledge operational mechanics where transaction logs are anchored immutably into client local storage without storing proprietary ideas on central databases.</p>
-        <p>Our infrastructure ensures that your conceptual framework is processed in a transient sandbox enclave and immediately purged from server memory post-transmission. The only permanent record exists within your cryptographically secured local vault.</p>
-    </main>
-    <footer class="mt-24 pt-8 border-t border-zinc-800 text-[10px] text-zinc-600">
-        KRYONARA LABS // CRYPTO_LOG_v1.0
-    </footer>
-</body>
-</html>
+{% extends "external_base.html" %}
+{% block title %}Cryptographic Log Ledger{% endblock %}
+{% block content %}
+<h1 class="serif text-6xl font-black mb-8 border-b-4 border-black pb-4 text-black">Data Ledger</h1>
+<div class="space-y-8 text-lg leading-relaxed text-[#534c44]">
+    <p>The Cryptographic Log Ledger provides a detailed breakdown of how RoastLab handles transaction metadata without compromising conceptual integrity.</p>
+    <p>Every analysis session generates a unique cryptographic hash, allowing users to verify the authenticity of their report without revealing its contents to third parties. This immutable record is stored within the user's local session environment.</p>
+</div>
+{% endblock %}

@@ -1,28 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Manifesto // RoastLab</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@900&family=JetBrains+Mono:wght@400;700&display=swap">
-    <style>
-        body { background-color: #0c0806; color: #f7f5ec; font-family: 'JetBrains Mono', monospace; }
-        .serif { font-family: 'Fraunces', serif; }
-        .text-acid { color: #73d41d; }
-    </style>
-</head>
-<body class="p-8 md:p-24 max-w-4xl mx-auto">
-    <header class="mb-16 border-b border-zinc-800 pb-8">
-        <h1 class="serif text-6xl font-black text-white mb-4">Our Manifesto</h1>
-        <p class="text-acid uppercase tracking-widest font-bold text-xs">// UNVARNISHED ALGORITHMIC VALIDATION</p>
-    </header>
-    <main class="space-y-8 text-lg leading-relaxed">
-        <p>At RoastLab, we believe the greatest threat to innovation isn't failure, but the soft echo chambers of modern venture capital. Incubators and peers often trade honesty for social capital, leaving founders blind to structural flaws until it's too late.</p>
-        <p>Our focus is on unvarnished, algorithmic validation. We protect time and capital by identifying failure points before they become catastrophic. We do not care about your feelings; we care about your unit economics, your regulatory exposure, and your market feasibility.</p>
-        <p>We are the adversarial force required for true resilience. We are the cold light of day in a world of hype.</p>
-    </main>
-    <footer class="mt-24 pt-8 border-t border-zinc-800 text-[10px] text-zinc-600">
-        KRYONARA LABS // MANIFESTO_CORE_v1.0
-    </footer>
-</body>
-</html>
+{% extends "external_base.html" %}
+{% block title %}Manifesto{% endblock %}
+{% block content %}
+<h1 class="serif text-6xl font-black mb-8 border-b-4 border-black pb-4 text-black">Our Manifesto</h1>
+<div class="space-y-8 text-lg leading-relaxed text-[#534c44]">
+    <p>At RoastLab, we believe that true growth happens at the intersection of honesty and expertise. Modern entrepreneurship is often clouded by "validation theatre" — the tendency for peers and mentors to provide soft, encouraging feedback that masks critical structural flaws.</p>
+    <p>We exist to break that cycle. Our mission is to provide founders with unvarnished, algorithmic validation. By identifying points of failure before they become catastrophic, we protect your time, your engineering resources, and your capital.</p>
+    <p>Our focus remains on the hard metrics of business: unit economics, regulatory feasibility, and market execution. We are the objective standard for launch readiness.</p>
+</div>
+{% endblock %}

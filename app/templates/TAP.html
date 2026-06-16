@@ -1,27 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Zero-Retention Auditing Charter // RoastLab</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@900&family=JetBrains+Mono:wght@400;700&display=swap">
-    <style>
-        body { background-color: #0c0806; color: #f7f5ec; font-family: 'JetBrains Mono', monospace; }
-        .serif { font-family: 'Fraunces', serif; }
-        .text-acid { color: #73d41d; }
-    </style>
-</head>
-<body class="p-8 md:p-24 max-w-4xl mx-auto">
-    <header class="mb-16 border-b border-zinc-800 pb-8">
-        <h1 class="serif text-6xl font-black text-white mb-4">Zero-Retention Auditing Charter</h1>
-        <p class="text-acid uppercase tracking-widest font-bold text-xs">// EPHEMERAL EXECUTION METRICS</p>
-    </header>
-    <main class="space-y-8 text-lg leading-relaxed">
-        <p>RoastLab operates on a zero-retention policy for all analytical transmissions. Detailed hardware execution metrics outline physical server RAM flushes and sandbox destruction routines within milliseconds of transmission.</p>
-        <p>Once your report is generated and transmitted to your browser, the server-side sandbox is incinerated. We maintain no logs of the conceptual data processed, ensuring absolute confidentiality for your intellectual property.</p>
-    </main>
-    <footer class="mt-24 pt-8 border-t border-zinc-800 text-[10px] text-zinc-600">
-        KRYONARA LABS // ZERO_RETENTION_v1.0
-    </footer>
-</body>
-</html>
+{% extends "external_base.html" %}
+{% block title %}Audit Protocol{% endblock %}
+{% block content %}
+<h1 class="serif text-6xl font-black mb-8 border-b-4 border-black pb-4 text-black">Audit Protocol</h1>
+<div class="space-y-8 text-lg leading-relaxed text-[#534c44]">
+    <p>The RoastLab Audit Protocol (TAP) is our proprietary framework for evaluating startup viability through four distinct sequential phases.</p>
+    <ul class="list-decimal pl-8 space-y-4">
+        <li><strong>Phase 1: Concept Breakdown</strong> - Feasibility and mechanical analysis.</li>
+        <li><strong>Phase 2: Critical Analysis</strong> - Identification of structural unit-economic flaws.</li>
+        <li><strong>Phase 3: Strategic Reconstruction</strong> - Actionable alternative strategies.</li>
+        <li><strong>Phase 4: Performance Metrics</strong> - Scoring of market readiness and execution.</li>
+    </ul>
+</div>
+{% endblock %}

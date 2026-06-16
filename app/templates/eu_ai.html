@@ -1,27 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>EU-AI Act Safe Harbor Specs // RoastLab</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@900&family=JetBrains+Mono:wght@400;700&display=swap">
-    <style>
-        body { background-color: #0c0806; color: #f7f5ec; font-family: 'JetBrains Mono', monospace; }
-        .serif { font-family: 'Fraunces', serif; }
-        .text-acid { color: #73d41d; }
-    </style>
-</head>
-<body class="p-8 md:p-24 max-w-4xl mx-auto">
-    <header class="mb-16 border-b border-zinc-800 pb-8">
-        <h1 class="serif text-6xl font-black text-white mb-4">EU-AI Act Safe Harbor Specs</h1>
-        <p class="text-acid uppercase tracking-widest font-bold text-xs">// COMPLIANCE METRICS MAPPING</p>
-    </header>
-    <main class="space-y-8 text-lg leading-relaxed">
-        <p>Official compliance metrics mapping algorithmic data tracking steps, transparency protocols, and bias-elimination scripts under active European high-risk AI frameworks.</p>
-        <p>RoastLab adheres to the strict transparency requirements outlined in the EU-AI Act, providing clear documentation on model parameters, intended use cases, and our internal adversarial testing protocols.</p>
-    </main>
-    <footer class="mt-24 pt-8 border-t border-zinc-800 text-[10px] text-zinc-600">
-        KRYONARA LABS // EU_AI_COMPLIANCE_v1.0
-    </footer>
-</body>
-</html>
+{% extends "external_base.html" %}
+{% block title %}EU-AI Act Specs{% endblock %}
+{% block content %}
+<h1 class="serif text-6xl font-black mb-8 border-b-4 border-black pb-4 text-black">EU-AI Act Compliance</h1>
+<div class="space-y-8 text-lg leading-relaxed text-[#534c44]">
+    <p>RoastLab operates in full compliance with the European Union Artificial Intelligence Act (EU-AI Act) framework for high-risk AI systems.</p>
+    <p>We maintain rigorous transparency protocols, including algorithmic bias-elimination scripts and detailed tracking of model inference paths. Our systems are designed to ensure human-in-the-loop optionality for enterprise partners who require manual verification of AI-generated strategic pivots.</p>
+</div>
+{% endblock %}

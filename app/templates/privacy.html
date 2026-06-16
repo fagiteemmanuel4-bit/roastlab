@@ -1,32 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Global Privacy Enclaves // RoastLab</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@900&family=JetBrains+Mono:wght@400;700&display=swap">
-    <style>
-        body { background-color: #0c0806; color: #f7f5ec; font-family: 'JetBrains Mono', monospace; }
-        .serif { font-family: 'Fraunces', serif; }
-        .text-acid { color: #73d41d; }
-    </style>
-</head>
-<body class="p-8 md:p-24 max-w-4xl mx-auto">
-    <header class="mb-16 border-b border-zinc-800 pb-8">
-        <h1 class="serif text-6xl font-black text-white mb-4">Global Privacy Enclaves</h1>
-        <p class="text-acid uppercase tracking-widest font-bold text-xs">// GEOGRAPHICAL DATA ROUTING</p>
-    </header>
-    <main class="space-y-8 text-lg leading-relaxed">
-        <p>Geographical data routing mappings tracking isolated regional proxy arrays across key innovation hubs:</p>
-        <ul class="list-disc pl-8 space-y-4 text-acid">
-            <li>Silicon Valley (US-WEST) - Primary Inference Node</li>
-            <li>London/Tokyo (UK/APAC) - Redundant Operational Clusters</li>
-            <li>Shanghai (APAC-EAST) - High-Throughput Edge Gateways</li>
-        </ul>
-        <p>Our data enclaves ensure that processing occurs as close to the user as possible, minimizing latency while adhering to regional data sovereignty requirements.</p>
-    </main>
-    <footer class="mt-24 pt-8 border-t border-zinc-800 text-[10px] text-zinc-600">
-        KRYONARA LABS // PRIVACY_ENCLAVES_v1.0
-    </footer>
-</body>
-</html>
+{% extends "external_base.html" %}
+{% block title %}Privacy Charter{% endblock %}
+{% block content %}
+<h1 class="serif text-6xl font-black mb-8 border-b-4 border-black pb-4 text-black">Privacy Charter</h1>
+<div class="space-y-8 text-lg leading-relaxed text-[#534c44]">
+    <p>RoastLab is committed to the absolute privacy and security of your proprietary ideas. We utilize a zero-knowledge processing framework designed to protect your intellectual property from ingestion or storage.</p>
+    <h2 class="font-bold text-black uppercase tracking-widest text-sm">1. Transient Data Ingestion</h2>
+    <p>Startup concepts and pitch briefs are processed in a transient sandbox enclave. Your data is never stored on a central database; it remains in-memory only for the duration of the analysis.</p>
+    <h2 class="font-bold text-black uppercase tracking-widest text-sm">2. Local Storage Enclaves</h2>
+    <p>All saved verdicts are cryptographically anchored to your local browser storage or your private user profile. We do not have access to your private vault contents.</p>
+    <h2 class="font-bold text-black uppercase tracking-widest text-sm">3. Zero Model Training</h2>
+    <p>We do not use your inputs to train or fine-tune our models. Your strategic frameworks belong to you, and we ensure they stay that way.</p>
+</div>
+{% endblock %}

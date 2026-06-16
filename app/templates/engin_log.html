@@ -1,40 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Engineering Logs // RoastLab</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@900&family=JetBrains+Mono:wght@400;700&display=swap">
-    <style>
-        body { background-color: #0c0806; color: #f7f5ec; font-family: 'JetBrains Mono', monospace; }
-        .serif { font-family: 'Fraunces', serif; }
-        .text-acid { color: #73d41d; }
-    </style>
-</head>
-<body class="p-8 md:p-24 max-w-4xl mx-auto">
-    <header class="mb-16 border-b border-zinc-800 pb-8">
-        <h1 class="serif text-6xl font-black text-white mb-4">Engineering Logs</h1>
-        <p class="text-acid uppercase tracking-widest font-bold text-xs">// TELEMETRY PATCHES & OPTIMIZATION</p>
-    </header>
-    <main class="space-y-4 font-mono text-xs">
-        <div class="border border-zinc-800 p-4 hover:border-acid transition-colors">
-            <p class="text-zinc-500">[2026-05-30 14:22:01]</p>
-            <p class="text-white">COMMIT: logic_refactor --phases=4 --status=stable</p>
-            <p class="text-zinc-400">> Optimized data latency to 14ms across regional nodes.</p>
-        </div>
-        <div class="border border-zinc-800 p-4 hover:border-acid transition-colors">
-            <p class="text-zinc-500">[2026-05-29 09:15:44]</p>
-            <p class="text-white">COMMIT: security_patch --auth=firebase_guard --vault=cryptographic</p>
-            <p class="text-zinc-400">> Implementing zero-knowledge operational mechanics for user payloads.</p>
-        </div>
-        <div class="border border-zinc-800 p-4 hover:border-acid transition-colors">
-            <p class="text-zinc-500">[2026-05-28 22:40:12]</p>
-            <p class="text-white">COMMIT: model_update --engine=adversarial_v4</p>
-            <p class="text-zinc-400">> Tuning reconstruction layer for higher capital efficiency accuracy.</p>
-        </div>
-    </main>
-    <footer class="mt-24 pt-8 border-t border-zinc-800 text-[10px] text-zinc-600">
-        KRYONARA LABS // ENGINEERING_LOGS_v1.0
-    </footer>
-</body>
-</html>
+{% extends "external_base.html" %}
+{% block title %}Engineering Logs{% endblock %}
+{% block content %}
+<h1 class="serif text-6xl font-black mb-8 border-b-4 border-black pb-4 text-black">Engineering Logs</h1>
+<div class="space-y-4 font-mono text-xs text-[#534c44]">
+    <div class="p-4 border-2 border-black bg-white hover:bg-[#73d41d]/5 transition-colors">
+        <p class="text-gray-400">[2026-06-15 14:22:01]</p>
+        <p class="text-black font-bold">COMMIT: logic_v2_light --theme=professional --auth=frictionless</p>
+        <p>> Restoration of professional light theme. Simplified UX terminology.</p>
+    </div>
+    <div class="p-4 border-2 border-black bg-white hover:bg-[#73d41d]/5 transition-colors">
+        <p class="text-gray-400">[2026-06-14 09:15:44]</p>
+        <p class="text-black font-bold">COMMIT: security_patch --vault=cryptographic --v2</p>
+        <p>> Enhanced local vault encryption. Latency optimized to 12ms.</p>
+    </div>
+</div>
+{% endblock %}

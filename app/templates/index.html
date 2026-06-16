@@ -13,11 +13,11 @@
 
     <style>
         :root {
-            --paper: #0c0806;
-            --ink: #f7f5ec;
+            --paper: #f7f5ec;
+            --ink: #0c0806;
             --acid: #73d41d;
-            --card: #16161c;
-            --muted-foreground: #a1a1aa;
+            --card: #fdfcf6;
+            --muted: #534c44;
             --font-sans: 'JetBrains Mono', monospace;
             --font-serif: 'Fraunces', serif;
         }
@@ -80,7 +80,7 @@
 
         .brutal-btn:hover {
             background-color: var(--acid);
-            color: var(--paper);
+            color: var(--ink);
             transform: translate(-2px, -2px);
             box-shadow: 4px 4px 0px 0px var(--ink);
         }
@@ -108,24 +108,34 @@
             height: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #000;
+            background: var(--paper);
         }
         ::-webkit-scrollbar-thumb {
-            background: #333;
-            border: 2px solid #000;
+            background: #ccc;
+            border: 2px solid var(--paper);
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--acid);
+            background: var(--ink);
         }
 
         /* Grid scanline overlays */
         .scanlines {
             background: linear-gradient(
                 rgba(18, 16, 16, 0) 50%, 
-                rgba(0, 0, 0, 0.2) 50%
+                rgba(0, 0, 0, 0.04) 50%
             );
             background-size: 100% 4px;
             pointer-events: none;
+        }
+
+        /* Responsive Text */
+        @media (min-width: 768px) {
+            .text-huge { font-size: 5rem; }
+            .text-large { font-size: 3rem; }
+        }
+        @media (max-width: 767px) {
+            .text-huge { font-size: 3rem; }
+            .text-large { font-size: 2rem; }
         }
     </style>
 </head>
@@ -133,17 +143,17 @@
     <div class="scanlines absolute inset-0 z-50 pointer-events-none opacity-40"></div>
 
     <!-- [REQ-01] First-Time Visitor Video Overlay -->
-    <div id="firstVisitOverlay" class="fixed inset-0 z-[100] hidden items-center justify-center backdrop-blur-xl bg-black/80 p-4">
-        <div class="bg-zinc-950 border border-zinc-800 w-full max-w-3xl relative overflow-hidden brutal-shadow-lg">
-            <button id="closeFirstVisit" class="absolute top-4 right-4 text-white hover:text-acid z-10">
+    <div id="firstVisitOverlay" class="fixed inset-0 z-[100] hidden items-center justify-center backdrop-blur-xl bg-black/40 p-4">
+        <div class="bg-white border-4 border-black w-full max-w-3xl relative overflow-hidden brutal-shadow-lg">
+            <button id="closeFirstVisit" class="absolute top-4 right-4 text-black hover:text-acid z-10">
                 <i data-lucide="x" class="w-8 h-8"></i>
             </button>
             <div class="p-8 space-y-6">
                 <div class="text-center space-y-2">
-                    <h2 class="serif-title text-4xl font-bold text-white uppercase tracking-tighter">Welcome to RoastLab</h2>
-                    <p class="text-zinc-500 text-xs font-bold tracking-widest uppercase">Kryonara Labs Strategic Deployment</p>
+                    <h2 class="serif-title text-4xl font-bold text-black uppercase tracking-tighter">Welcome to RoastLab</h2>
+                    <p class="text-zinc-500 text-xs font-bold tracking-widest uppercase">Start your strategic audit</p>
                 </div>
-                <div class="aspect-video bg-black brutal-border border-zinc-800 relative group">
+                <div class="aspect-video bg-black brutal-border border-black relative group">
                     <iframe
                         class="w-full h-full"
                         src="https://www.youtube.com/embed/P3XeG0-Ojn8?autoplay=0&controls=1&rel=0"
@@ -154,8 +164,8 @@
                     </iframe>
                 </div>
                 <div class="flex justify-center">
-                    <button id="ctaExecuteDeployment" class="brutal-btn bg-white text-black px-8 py-4 text-sm font-bold uppercase tracking-widest hover:bg-acid">
-                        [ EXECUTE DEPLOYMENT // START USING ROASTLAB ]
+                    <button id="ctaExecuteDeployment" class="brutal-btn bg-black text-white px-8 py-4 text-sm font-bold uppercase tracking-widest">
+                        [ START USING ROASTLAB ]
                     </button>
                 </div>
             </div>
@@ -165,40 +175,40 @@
     <!-- Ticker Tape Top Banner -->
     <div class="ticker-wrapper">
         <div class="ticker-content">
-            ✦ GLOBAL ROAST REACTOR ACTIVE ✦ MONITORED BREAKPOINTS: SILICON VALLEY [DELUSIONAL] ✦ TOKYO [CONSOLIDATING] ✦ LONDON [DIVERSIFYING] ✦ SHANGHAI [OVERHEATING] ✦ CURRENT TRANSACTION ID: #RL-2026-928A ✦ MEMORY OVERHEAD: 24.8% ✦ COMPILING AUTOMATED CRITIQUES ✦ GLOBAL ROAST REACTOR ACTIVE ✦
+            ✦ GLOBAL STARTUP ANALYSIS ACTIVE ✦ MARKET STATUS: SILICON VALLEY [DELUSIONAL] ✦ TOKYO [CONSOLIDATING] ✦ LONDON [DIVERSIFYING] ✦ SHANGHAI [OVERHEATING] ✦ CURRENT SESSION ACTIVE ✦ GLOBAL STARTUP ANALYSIS ACTIVE ✦
         </div>
     </div>
 
     <!-- Main Container -->
     <div class="max-w-6xl mx-auto px-4 md:px-8 py-8 w-full flex-grow">
         
-        <header class="flex flex-col md:flex-row justify-between items-start md:items-center border-b-2 border-white pb-6 mb-12">
+        <header class="flex flex-col md:flex-row justify-between items-start md:items-center border-b-2 border-black pb-6 mb-12">
             <div>
-                <div class="serif-title text-5xl font-bold tracking-tight text-white">RoastLab <span class="text-xs font-sans font-bold uppercase tracking-widest text-zinc-500">VOL.01 · ISSUE 06.2026</span></div>
-                <p class="text-xs uppercase tracking-widest mt-1 text-zinc-400 font-bold">World Telemetry Audit Dashboard</p>
+                <div class="serif-title text-5xl font-bold tracking-tight">RoastLab <span class="text-xs font-sans font-bold uppercase tracking-widest text-[#534c44]">v2.0 LIGHT</span></div>
+                <p class="text-xs uppercase tracking-widest mt-1 text-[#534c44] font-bold">Startup Evaluation Terminal</p>
             </div>
             <div class="mt-4 md:mt-0 flex gap-4 items-center relative">
-                <span class="bg-acid brutal-border border-white px-3 py-1 text-xs font-bold tracking-widest uppercase text-black">BRUTALLY HONEST</span>
+                <span class="bg-[#73d41d] brutal-border border-black px-3 py-1 text-xs font-bold tracking-widest uppercase text-black">PROFESSIONAL GRADE</span>
 
                 <!-- [REQ-06] Header Profile Avatar Dropdown -->
                 <div id="authStatusContainer" class="flex items-center gap-3">
-                    <div id="authStatusText" class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">CONNECTING...</div>
-                    <div id="userAvatar" class="w-10 h-10 bg-zinc-950 border-2 border-zinc-800 rounded-full flex items-center justify-center cursor-pointer hover:border-acid transition-colors hidden">
-                        <span id="userInitials" class="text-white text-xs font-black">??</span>
+                    <div id="authStatusText" class="text-[10px] font-bold text-[#534c44] uppercase tracking-widest">CONNECTING...</div>
+                    <div id="userAvatar" class="w-10 h-10 bg-white border-2 border-black rounded-full flex items-center justify-center cursor-pointer hover:bg-acid transition-colors hidden">
+                        <span id="userInitials" class="text-black text-xs font-black">??</span>
                     </div>
                 </div>
 
                 <!-- Avatar Dropdown Menu -->
-                <div id="avatarDropdown" class="absolute top-full right-0 mt-4 w-64 bg-zinc-950 border border-zinc-800 brutal-shadow-lg z-[100] hidden">
-                    <div class="p-4 border-b border-zinc-900">
-                        <div id="dropdownUserEmail" class="text-[10px] text-zinc-500 font-mono truncate">user@kryonara.com</div>
+                <div id="avatarDropdown" class="absolute top-full right-0 mt-4 w-64 bg-white border-2 border-black brutal-shadow-lg z-[100] hidden">
+                    <div class="p-4 border-b border-gray-100">
+                        <div id="dropdownUserEmail" class="text-[10px] text-[#534c44] font-mono truncate">user@email.com</div>
                     </div>
                     <div class="flex flex-col">
-                        <a href="/enterprise.html" class="p-4 text-[10px] font-bold text-white uppercase tracking-widest hover:bg-zinc-900 border-b border-zinc-900 transition-colors">
-                            [ SYSTEM NODE SETTINGS / BILLING MANAGEMENT ]
+                        <a href="/enterprise.html" class="p-4 text-[10px] font-bold text-black uppercase tracking-widest hover:bg-gray-50 border-b border-gray-100 transition-colors">
+                            [ SYSTEM SETTINGS / BILLING ]
                         </a>
-                        <button id="logoutBtn" class="p-4 text-[10px] font-bold text-acid uppercase tracking-widest hover:bg-zinc-900 text-left transition-colors">
-                            [ DISCONNECT TERMINAL ACTIVE SESSION / LOGOUT ]
+                        <button id="logoutBtn" class="p-4 text-[10px] font-bold text-red-600 uppercase tracking-widest hover:bg-gray-50 text-left transition-colors">
+                            [ LOGOUT SESSION ]
                         </button>
                     </div>
                 </div>
@@ -208,28 +218,27 @@
         <!-- Main Workspace Section -->
         <main class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
-            <!-- Left Column -->
             <section class="lg:col-span-7 space-y-8">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                     <div class="md:col-span-8">
-                        <span class="text-xs uppercase tracking-widest font-bold text-zinc-500 block mb-2">01 — Core Context Input</span>
-                        <h1 class="serif-title text-5xl md:text-6xl font-black leading-none mb-6 text-white">
-                            Your idea,<br>reviewed by someone who <span class="bg-acid inline-block px-3 py-1 brutal-border border-white text-black">won't lie.</span>
+                        <span class="text-xs uppercase tracking-widest font-bold text-[#534c44] block mb-2">01 — Input Startup Concept</span>
+                        <h1 class="serif-title text-huge font-black leading-none mb-6">
+                            Your idea, reviewed by an <span class="bg-[#73d41d] inline-block px-3 py-1 brutal-border border-black">honest AI.</span>
                         </h1>
-                        <p class="text-zinc-400 text-xs leading-relaxed max-w-lg font-sans">
-                            Standard feedback is polite because people want to spare your feelings. RoastLab AI identifies the structural failures of your startup model in under ten seconds. No fluff, just mechanics.
+                        <p class="text-[#534c44] text-sm leading-relaxed max-w-lg font-sans">
+                            Standard feedback is often too polite. RoastLab AI identifies the structural points of failure in your startup model instantly. No fluff, just honest mechanics.
                         </p>
                     </div>
                     
-                    <div class="md:col-span-4 hidden md:flex flex-col items-center justify-center border-2 border-white p-4 bg-zinc-900 brutal-shadow relative overflow-hidden">
-                        <div class="absolute top-1 left-2 text-[8px] font-bold text-zinc-500">WORLD CORES</div>
-                        <pre class="globe-ascii text-white" id="cyberGlobe">
+                    <div class="md:col-span-4 hidden md:flex flex-col items-center justify-center border-2 border-black p-4 bg-white brutal-shadow relative overflow-hidden">
+                        <div class="absolute top-1 left-2 text-[8px] font-bold text-[#534c44]">GLOBAL CORE</div>
+                        <pre class="globe-ascii" id="cyberGlobe">
   .-"''"-.
  /        |          |
  \        /
   '-.__.-'
                         </pre>
-                        <div class="text-[9px] font-bold tracking-widest text-center mt-2 text-white border-t border-white pt-1 w-full">GEOSPATIAL STACK</div>
+                        <div class="text-[9px] font-bold tracking-widest text-center mt-2 text-black border-t border-black pt-1 w-full">GEOSPATIAL DATA</div>
                     </div>
                 </div>
 
@@ -237,131 +246,114 @@
                     <input type="hidden" name="is_pro" id="is_pro_input" value="false">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="flex flex-col gap-2">
-                            <label class="text-xs uppercase font-bold tracking-widest text-white">Intensity Level</label>
-                            <select name="intensity" id="intensity" class="brutal-border border-white bg-zinc-900 text-white p-3 font-sans outline-none text-sm brutal-shadow">
-                                <option value="Mild" {% if selected_intensity == 'Mild' %}selected{% endif %}>Mild Critique</option>
-                                <option value="Savage" {% if selected_intensity == 'Savage' %}selected{% endif %}>Savage Breakdown</option>
-                                <option value="Nuclear" {% if selected_intensity == 'Nuclear' %}selected{% endif %}>Nuclear Incineration</option>
+                            <label class="text-xs uppercase font-bold tracking-widest">Analysis Intensity</label>
+                            <select name="intensity" id="intensity" class="brutal-border border-black bg-white p-3 font-sans outline-none text-sm brutal-shadow">
+                                <option value="Mild" {% if selected_intensity == 'Mild' %}selected{% endif %}>Constructive</option>
+                                <option value="Savage" {% if selected_intensity == 'Savage' %}selected{% endif %}>Savage</option>
+                                <option value="Nuclear" {% if selected_intensity == 'Nuclear' %}selected{% endif %}>Nuclear</option>
                             </select>
                         </div>
                         <div class="flex flex-col gap-2">
-                            <label class="text-xs uppercase font-bold tracking-widest text-white">AI Persona</label>
-                            <select name="personality" id="personality" class="brutal-border border-white bg-zinc-900 text-white p-3 font-sans outline-none text-sm brutal-shadow">
+                            <label class="text-xs uppercase font-bold tracking-widest">Expert Persona</label>
+                            <select name="personality" id="personality" class="brutal-border border-black bg-white p-3 font-sans outline-none text-sm brutal-shadow">
                                 <option value="Tech Bro" {% if selected_personality == 'Tech Bro' %}selected{% endif %}>Silicon Valley VC</option>
-                                <option value="Gordon Ramsay" {% if selected_personality == 'Gordon Ramsay' %}selected{% endif %}>Gordon Ramsay Mode</option>
+                                <option value="Gordon Ramsay" {% if selected_personality == 'Gordon Ramsay' %}selected{% endif %}>Honest Founder</option>
                                 <option value="Sarcastic Assistant" {% if selected_personality == 'Sarcastic Assistant' %}selected{% endif %}>Sarcastic Assistant</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="flex flex-col gap-2">
-                        <label class="text-xs uppercase font-bold tracking-widest text-white">Startup Concept / Pitch Link</label>
-                        <div class="brutal-border border-white brutal-shadow-lg bg-zinc-900 p-4">
+                        <label class="text-xs uppercase font-bold tracking-widest">Startup Concept / Pitch Brief</label>
+                        <div class="brutal-border border-black brutal-shadow-lg bg-white p-4">
                             <textarea 
                                 name="user_input" 
                                 id="user_input" 
-                                class="w-full h-44 bg-transparent resize-none outline-none font-sans text-sm leading-relaxed text-white"
-                                placeholder="e.g. A marketplace where retired chefs livestream cooking lessons to people in food deserts..."
+                                class="w-full h-44 bg-transparent resize-none outline-none font-sans text-lg leading-relaxed"
+                                placeholder="Describe your idea here..."
                                 maxlength="2000"
                                 required
                             >{{ user_input }}</textarea>
-                            <div class="flex justify-between items-center mt-3 pt-3 border-t border-white text-xs font-bold text-zinc-500">
+                            <div class="flex justify-between items-center mt-3 pt-3 border-t border-black text-xs font-bold text-[#534c44]">
                                 <span id="charCount">0 / 2000</span>
-                                <span>SECURE LOCAL CLOUD active</span>
+                                <span>SECURE LOCAL ENCLAVE active</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="space-y-2">
-                        <span class="text-[10px] uppercase tracking-widest font-bold text-zinc-500">Or Trigger Sample Model:</span>
-                        <div class="flex flex-wrap gap-2">
-                            <button type="button" class="border border-white bg-zinc-900 text-white hover:bg-acid hover:text-black px-3 py-1.5 text-xs transition-colors" onclick="populateTemplate('An on-demand private helicopter service for dogs requiring extreme luxury transport.')">
-                                Luxury Dog Helicopter
-                            </button>
-                            <button type="button" class="border border-white bg-zinc-900 text-white hover:bg-acid hover:text-black px-3 py-1.5 text-xs transition-colors" onclick="populateTemplate('AI agent that analyzes tenant rights to renegotiate rent on local properties.')">
-                                Rent Negotiator AI
-                            </button>
-                            <button type="button" class="border border-white bg-zinc-900 text-white hover:bg-acid hover:text-black px-3 py-1.5 text-xs transition-colors" onclick="populateTemplate('A browser extension that automatically replaces images of politicians with kittens.')">
-                                Politician Block Extension
-                            </button>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="w-full brutal-btn py-4 text-center text-sm font-bold uppercase tracking-widest brutal-shadow border-white">
-                        Ignite Roast Reactor →
+                    <button type="submit" class="w-full brutal-btn py-4 text-center text-sm font-bold uppercase tracking-widest brutal-shadow border-black">
+                        Run AI Analysis →
                     </button>
                 </form>
             </section>
 
-            <!-- Right Column -->
             <section class="lg:col-span-5 space-y-6">
-                <!-- [REQ-03] In-Flight Chain-of-Thought Log Modal -->
-                <div id="loadingOverlay" class="hidden fixed inset-0 z-[200] flex items-center justify-center backdrop-blur-md bg-black/60 p-4">
-                    <div class="bg-zinc-950 border border-zinc-800 w-full max-w-2xl brutal-shadow-lg overflow-hidden">
-                        <div class="bg-zinc-900 border-b border-zinc-800 p-4 flex justify-between items-center">
+                <!-- [REQ-03] Log Modal -->
+                <div id="loadingOverlay" class="hidden fixed inset-0 z-[200] flex items-center justify-center backdrop-blur-md bg-white/60 p-4">
+                    <div class="bg-white border-4 border-black w-full max-w-2xl brutal-shadow-lg overflow-hidden">
+                        <div class="bg-gray-50 border-b-2 border-black p-4 flex justify-between items-center">
                             <div class="flex items-center gap-2">
-                                <div class="w-2 h-2 bg-acid animate-pulse"></div>
-                                <span class="text-[10px] uppercase font-bold tracking-widest text-zinc-400">Core Thinking Engine Active</span>
+                                <div class="w-2 h-2 bg-acid animate-pulse border border-black"></div>
+                                <span class="text-[10px] uppercase font-bold tracking-widest">Processing Data...</span>
                             </div>
-                            <span class="text-[10px] font-mono text-zinc-600">SYS_PROCESS_v.4.0.2</span>
                         </div>
                         <div class="p-8 space-y-6">
-                            <div id="cotLog" class="bg-black p-6 font-mono text-xs space-y-2 h-64 overflow-y-auto custom-scroll border border-zinc-900 text-zinc-400">
+                            <div id="cotLog" class="bg-white p-6 font-mono text-xs space-y-2 h-64 overflow-y-auto border-2 border-black">
                             </div>
                             <div class="space-y-2">
-                                <div class="flex justify-between text-[10px] uppercase font-bold tracking-widest text-zinc-500">
-                                    <span>Compiling Framework</span>
+                                <div class="flex justify-between text-[10px] uppercase font-bold tracking-widest text-gray-500">
+                                    <span>Analysis Progress</span>
                                     <span id="loaderPercent">10%</span>
                                 </div>
-                                <div class="h-1 bg-zinc-900 overflow-hidden">
-                                    <div id="loaderProgressBar" class="h-full bg-acid transition-all duration-300" style="width: 10%;"></div>
+                                <div class="h-4 bg-gray-100 border-2 border-black overflow-hidden">
+                                    <div id="loaderProgressBar" class="h-full bg-acid border-r-2 border-black transition-all duration-300" style="width: 10%;"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- [REQ-04] Massive Responsive Analysis Dashboard Overlay -->
+                <!-- [REQ-04] Analysis Dashboard Overlay -->
                 {% if roast_result %}
-                <div id="analysisDashboard" class="fixed inset-0 z-[300] bg-zinc-950 flex flex-col p-0 md:p-8 overflow-y-auto custom-scroll">
-                    <div class="max-w-7xl mx-auto w-full bg-black border border-zinc-800 min-h-screen flex flex-col relative brutal-shadow-lg">
-                        <button id="closeDashboard" class="absolute top-6 right-6 text-zinc-500 hover:text-white z-50">
-                            <i data-lucide="x" class="w-10 h-10"></i>
+                <div id="analysisDashboard" class="fixed inset-0 z-[300] bg-white flex flex-col p-0 md:p-8 overflow-y-auto">
+                    <div class="max-w-7xl mx-auto w-full bg-[#fdfcf6] border-4 border-black min-h-screen flex flex-col relative brutal-shadow-lg">
+                        <button id="closeDashboard" class="absolute top-6 right-6 text-black hover:bg-acid p-2 border-2 border-black z-50 bg-white">
+                            <i data-lucide="x" class="w-8 h-8"></i>
                         </button>
 
-                        <div class="bg-zinc-900 border-b border-zinc-800 p-6 flex flex-wrap gap-4 items-center justify-between">
+                        <div class="bg-white border-b-4 border-black p-6 flex flex-wrap gap-4 items-center justify-between">
                             <div class="flex items-center gap-4">
-                                <div class="bg-acid text-black text-[10px] font-black px-3 py-1 uppercase tracking-widest">Live Analysis Payload</div>
-                                <h2 class="serif-title text-2xl font-bold text-white">"{{ roast_result.headline }}"</h2>
+                                <div class="bg-acid text-black text-[10px] font-black px-3 py-1 uppercase border-2 border-black">Analysis Report</div>
+                                <h2 class="serif-title text-2xl font-bold text-black">"{{ roast_result.headline }}"</h2>
                             </div>
                             <div class="flex gap-4">
-                                <button id="downloadReport" class="border border-zinc-700 text-white px-6 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-colors">
-                                    [ DOWNLOAD DESTRUCT REPORT (.PDF) ]
+                                <button id="downloadReport" class="border-2 border-black text-black px-6 py-3 text-[10px] font-bold uppercase hover:bg-acid transition-colors bg-white">
+                                    [ DOWNLOAD REPORT (.PDF) ]
                                 </button>
-                                <button id="mutateSystemNode" class="bg-acid text-black px-6 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-white transition-colors">
-                                    [ MUTATE SYSTEM NODE // CONVERT TO PBD ]
+                                <button id="mutateSystemNode" class="bg-acid text-black border-2 border-black px-6 py-3 text-[10px] font-bold uppercase hover:bg-white transition-colors">
+                                    [ EXPORT TO PROJECT BRIEF ]
                                 </button>
                             </div>
                         </div>
 
                         <div class="flex-grow p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
                             <div class="lg:col-span-4 space-y-12">
-                                <div class="border border-zinc-800 p-8 space-y-6">
-                                    <div class="text-[10px] uppercase font-bold tracking-widest text-zinc-500">Global Execution Score</div>
+                                <div class="border-4 border-black bg-white p-8 space-y-6 brutal-shadow">
+                                    <div class="text-[10px] uppercase font-bold tracking-widest text-[#534c44]">Brutality Score</div>
                                     <div class="flex items-baseline gap-2">
-                                        <span class="serif-title text-8xl font-black text-acid">{{ roast_result.score }}</span>
-                                        <span class="text-zinc-600 font-bold">/ 100</span>
+                                        <span class="serif-title text-huge font-black text-black">{{ roast_result.score }}</span>
+                                        <span class="text-zinc-400 font-bold">/ 100</span>
                                     </div>
-                                    <div class="grid grid-cols-1 gap-6 pt-6 border-t border-zinc-900">
+                                    <div class="grid grid-cols-1 gap-6 pt-6 border-t-2 border-black">
                                         {% if roast_result.metrics %}
                                         {% for label, value in roast_result.metrics.items() %}
                                         <div class="space-y-2">
-                                            <div class="flex justify-between text-[10px] uppercase font-bold tracking-widest text-zinc-400">
+                                            <div class="flex justify-between text-[10px] uppercase font-bold tracking-widest">
                                                 <span>{{ label.replace('_', ' ') }}</span>
                                                 <span>{{ value }}%</span>
                                             </div>
-                                            <div class="h-1 bg-zinc-900">
-                                                <div class="h-full bg-white" style="width: {{ value }}%"></div>
+                                            <div class="h-3 bg-gray-100 border-2 border-black">
+                                                <div class="h-full bg-[#73d41d]" style="width: {{ value }}%"></div>
                                             </div>
                                         </div>
                                         {% endfor %}
@@ -369,38 +361,38 @@
                                     </div>
                                 </div>
                                 <div class="space-y-4">
-                                    <div class="text-[10px] uppercase font-bold tracking-widest text-zinc-500">// Component Dissection</div>
-                                    <p class="text-zinc-400 text-sm leading-relaxed italic">"{{ roast_result.dissection }}"</p>
+                                    <div class="text-[10px] uppercase font-bold tracking-widest text-[#534c44]">Concept Breakdown</div>
+                                    <p class="text-[#0c0806] text-lg leading-relaxed italic">"{{ roast_result.dissection }}"</p>
                                 </div>
                             </div>
-                            <div class="lg:col-span-8 space-y-12">
+                            <div class="lg:col-span-8 space-y-12 text-black">
                                 <div class="space-y-8">
-                                    <div class="text-[10px] uppercase font-bold tracking-widest text-acid">Phase 02 // Adversarial Attack</div>
+                                    <div class="text-[10px] uppercase font-bold tracking-widest text-black border-b-2 border-black pb-2">Critical Flaws</div>
                                     <div class="grid grid-cols-1 gap-4">
                                         {% if roast_result.roast_bullets %}
                                         {% for bullet in roast_result.roast_bullets %}
-                                        <div class="flex gap-6 items-start p-6 bg-zinc-950 border border-zinc-900 hover:border-zinc-700 transition-colors">
-                                            <span class="text-acid font-black font-mono text-xl">0{{ loop.index }}</span>
-                                            <p class="text-white text-lg font-medium leading-tight">{{ bullet }}</p>
+                                        <div class="flex gap-6 items-start p-6 bg-white border-2 border-black brutal-shadow">
+                                            <span class="text-[#73d41d] font-black font-mono text-2xl">0{{ loop.index }}</span>
+                                            <p class="text-black text-xl font-medium leading-tight">{{ bullet }}</p>
                                         </div>
                                         {% endfor %}
                                         {% endif %}
                                     </div>
                                 </div>
-                                <div class="space-y-6 border-t border-zinc-900 pt-12">
-                                    <div class="text-[10px] uppercase font-bold tracking-widest text-zinc-500">Phase 02 // The Brutal Truth</div>
-                                    <p class="text-zinc-300 text-xl leading-relaxed">{{ roast_result.brutal_truth }}</p>
+                                <div class="space-y-6">
+                                    <div class="text-[10px] uppercase font-bold tracking-widest text-[#534c44]">The Honest Truth</div>
+                                    <p class="text-black text-2xl leading-relaxed">{{ roast_result.brutal_truth }}</p>
                                 </div>
-                                <div class="space-y-6 border-t border-zinc-900 pt-12">
-                                    <div class="text-[10px] uppercase font-bold tracking-widest text-acid">Phase 03 // The Reconstruction</div>
-                                    <div class="bg-zinc-900 border-l-4 border-acid p-8">
-                                        <p class="text-white text-lg leading-relaxed">{{ roast_result.reconstruction }}</p>
+                                <div class="space-y-6">
+                                    <div class="text-[10px] uppercase font-bold tracking-widest text-black border-b-2 border-black pb-2">Strategic Pivot</div>
+                                    <div class="bg-white border-4 border-black p-8 brutal-shadow">
+                                        <p class="text-black text-xl leading-relaxed">{{ roast_result.reconstruction }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="p-8 border-t border-zinc-900 flex justify-between items-center text-[10px] font-mono text-zinc-700 uppercase tracking-widest">
-                            <span>KRYONARA LABS // VERDICT SECURED</span>
+                        <div class="p-8 border-t-2 border-black flex justify-between items-center text-[10px] font-mono text-gray-400 uppercase tracking-widest">
+                            <span>ROASTLAB // OFFICIAL AUDIT</span>
                             <span>HASH: 0x{{ range(1000, 9999) | random }}{{ range(1000, 9999) | random }}</span>
                         </div>
                     </div>
@@ -410,179 +402,156 @@
         </main>
     </div>
 
-    <!-- Floating History Toggle -->
-    <div class="fixed bottom-6 left-6 z-40">
-        <button id="toggleDrawerBtn" class="w-14 h-14 bg-zinc-900 hover:bg-acid text-white hover:text-black border-2 border-white rounded-full flex items-center justify-center brutal-shadow-lg transition-transform hover:-translate-y-1">
-            <i data-lucide="history" class="w-6 h-6"></i>
-        </button>
-    </div>
-
-    <!-- History Drawer -->
-    <div id="drawerOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden transition-opacity duration-300">
-        <div id="drawerContent" class="w-full max-w-md bg-zinc-950 h-full brutal-border border-r border-white flex flex-col justify-between p-6 transform -translate-x-full transition-transform duration-300 ease-out">
-            <div class="space-y-6">
-                <div class="flex justify-between items-center border-b border-white pb-4">
-                    <h3 class="serif-title text-2xl font-bold text-white">Saved Verdicts</h3>
-                    <button id="closeDrawerBtn" class="hover:bg-acid hover:text-black p-1 brutal-border border-white bg-zinc-900 text-white">
-                        <i data-lucide="x" class="w-5 h-5"></i>
-                    </button>
-                </div>
-                <div class="relative">
-                    <input type="text" id="vaultQuery" class="w-full brutal-border border-white bg-zinc-900 text-white p-3 font-mono text-[10px] outline-none brutal-shadow focus:bg-acid/10 transition-colors" placeholder="[ VAULT QUERY: ENTER KEYWORD OR TRANSACTION ID... ]">
-                </div>
-                <div id="historyList" class="space-y-4 max-h-[60vh] overflow-y-auto pr-2 custom-scroll">
-                    <div class="text-xs font-bold text-center py-8 text-zinc-500">No saved verdicts yet. Generate some audits to populate history!</div>
-                </div>
-            </div>
-            <div class="border-t border-white pt-4">
-                <p class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold text-center">RoastLab AI secure local data sandbox</p>
-            </div>
-        </div>
-    </div>
-
     <!-- [REQ-05] PBD Generator Modal -->
-    <div id="pbdModal" class="fixed inset-0 bg-black/90 backdrop-blur-2xl z-[400] hidden flex items-center justify-center p-4">
-        <div id="pbdContainer" class="bg-zinc-950 border border-zinc-800 max-w-xl w-full p-10 space-y-8 brutal-shadow-lg relative">
-            <button id="closePbdModal" class="absolute top-4 right-4 text-zinc-500 hover:text-white">
-                <i data-lucide="x" class="w-6 h-6"></i>
+    <div id="pbdModal" class="fixed inset-0 bg-white/90 backdrop-blur-xl z-[400] hidden flex items-center justify-center p-4">
+        <div id="pbdContainer" class="bg-white border-4 border-black max-w-xl w-full p-10 space-y-8 brutal-shadow-lg relative">
+            <button id="closePbdModal" class="absolute top-4 right-4 text-black hover:text-acid">
+                <i data-lucide="x" class="w-8 h-8"></i>
             </button>
             <div id="pbdFormView" class="space-y-8">
                 <div class="text-center space-y-2">
-                    <div class="inline-block bg-acid text-black text-[10px] font-black px-3 py-1 uppercase tracking-widest mb-4">PBD GENERATION INTERFACE</div>
-                    <h3 class="serif-title text-4xl font-bold text-white">Project Brief</h3>
-                    <p class="text-zinc-500 text-xs uppercase tracking-widest font-bold">Initialize Official Documentation</p>
+                    <h3 class="serif-title text-4xl font-bold text-black">Project Brief</h3>
+                    <p class="text-[#534c44] text-xs uppercase tracking-widest font-bold">Professional Document Export</p>
                 </div>
                 <form id="pbdForm" class="space-y-6">
                     <div class="space-y-2">
-                        <label class="text-[10px] uppercase font-bold tracking-widest text-zinc-400">File System Name</label>
-                        <input type="text" id="pbdFileName" class="w-full bg-zinc-900 border border-zinc-800 text-white p-4 font-sans text-sm outline-none focus:border-acid" placeholder="e.g. PROJECT_ALPHA_V1" required>
+                        <label class="text-[10px] uppercase font-bold tracking-widest">Project Name</label>
+                        <input type="text" id="pbdFileName" class="w-full bg-white border-2 border-black p-4 font-sans text-sm outline-none focus:bg-acid/10" placeholder="e.g. Project Alpha" required>
                     </div>
                     <div class="space-y-2">
-                        <label class="text-[10px] uppercase font-bold tracking-widest text-zinc-400">Official Target Email</label>
-                        <input type="email" id="pbdEmail" class="w-full bg-zinc-900 border border-zinc-800 text-white p-4 font-sans text-sm outline-none focus:border-acid" placeholder="stategic@kryonara.com" required>
+                        <label class="text-[10px] uppercase font-bold tracking-widest">Target Email</label>
+                        <input type="email" id="pbdEmail" class="w-full bg-white border-2 border-black p-4 font-sans text-sm outline-none focus:bg-acid/10" placeholder="your@email.com" required>
                     </div>
                     <div class="space-y-2">
-                        <label class="text-[10px] uppercase font-bold tracking-widest text-zinc-400">Electronic Signature Input String</label>
-                        <input type="text" id="pbdSignature" class="w-full bg-zinc-900 border border-zinc-800 text-white p-4 font-sans text-sm outline-none focus:border-acid" placeholder="FULL NAME // AUTH CODE" required>
+                        <label class="text-[10px] uppercase font-bold tracking-widest">Digital Signature</label>
+                        <input type="text" id="pbdSignature" class="w-full bg-white border-2 border-black p-4 font-sans text-sm outline-none focus:bg-acid/10" placeholder="Your Full Name" required>
                     </div>
-                    <button type="submit" class="w-full bg-white text-black py-5 text-xs uppercase tracking-widest font-black hover:bg-acid transition-all">
-                        [ COMPILE & SECURE PBD ]
+                    <button type="submit" class="w-full bg-black text-white py-5 text-xs uppercase tracking-widest font-black hover:bg-acid hover:text-black transition-all">
+                        [ GENERATE PROJECT BRIEF ]
                     </button>
                 </form>
             </div>
             <div id="pbdCompilingView" class="hidden py-20 text-center space-y-8">
                 <div class="flex justify-center">
-                    <div class="w-16 h-16 border-4 border-acid border-t-transparent rounded-full animate-spin"></div>
+                    <div class="w-16 h-16 border-4 border-black border-t-acid rounded-full animate-spin"></div>
                 </div>
-                <div class="space-y-2">
-                    <h4 class="serif-title text-2xl font-bold text-white">COMPILING OFFICIAL PROJECT BRIEF DOCUMENT</h4>
-                    <p class="text-acid text-[10px] font-mono animate-pulse uppercase tracking-[0.3em]">EXECUTING CRYPTOGRAPHIC LAYERING...</p>
+                <div class="space-y-2 text-black font-bold">
+                    <h4 class="serif-title text-2xl">Preparing Document...</h4>
+                    <p class="text-xs uppercase tracking-widest">Formatting and securing payload</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- [REQ-02] Auth Guard Modal -->
-    <div id="authGuardModal" class="fixed inset-0 bg-black/80 backdrop-blur-xl z-[150] hidden flex items-center justify-center p-4">
-        <div class="bg-zinc-950 border border-zinc-800 max-w-md w-full p-8 space-y-8 brutal-shadow-lg relative text-white">
-            <button id="closeAuthModal" class="absolute top-4 right-4 text-zinc-500 hover:text-white">
+    <!-- [REQ-02] Auth Modal -->
+    <div id="authGuardModal" class="fixed inset-0 bg-white/80 backdrop-blur-xl z-[150] hidden flex items-center justify-center p-4">
+        <div class="bg-white border-4 border-black max-w-md w-full p-8 space-y-8 brutal-shadow-lg relative text-black">
+            <button id="closeAuthModal" class="absolute top-4 right-4 text-black">
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
             <div class="text-center space-y-2">
-                <div class="inline-block bg-acid/10 border border-acid/20 text-acid text-[10px] font-bold px-2 py-1 uppercase tracking-widest mb-2">SECURE HANDSHAKE REQUIRED</div>
-                <h3 class="serif-title text-3xl font-bold">Identity Verification</h3>
-                <p class="text-zinc-500 text-xs uppercase tracking-widest font-bold">Accessing Kryonara Strategic Pipeline</p>
+                <div class="inline-block bg-acid border-2 border-black text-black text-[10px] font-bold px-2 py-1 uppercase tracking-widest mb-2">Login Required</div>
+                <h3 class="serif-title text-3xl font-bold">Welcome Back</h3>
+                <p class="text-[#534c44] text-xs uppercase tracking-widest font-bold">Sign in to continue your analysis</p>
             </div>
             <form id="authGuardForm" class="space-y-4">
                 <div class="space-y-2">
-                    <label class="text-[10px] uppercase font-bold tracking-widest text-zinc-400">Credential Identifier</label>
-                    <input type="email" id="guardEmail" class="w-full bg-zinc-900 border border-zinc-800 text-white p-4 font-sans text-sm outline-none focus:border-acid" placeholder="Email address" required>
+                    <label class="text-[10px] uppercase font-bold tracking-widest">Email</label>
+                    <input type="email" id="guardEmail" class="w-full bg-white border-2 border-black p-4 font-sans text-sm outline-none" placeholder="Email" required>
                 </div>
                 <div class="space-y-2">
-                    <label class="text-[10px] uppercase font-bold tracking-widest text-zinc-400">Access Token</label>
-                    <input type="password" id="guardPassword" class="w-full bg-zinc-900 border border-zinc-800 text-white p-4 font-sans text-sm outline-none focus:border-acid" placeholder="Password" required>
+                    <label class="text-[10px] uppercase font-bold tracking-widest">Password</label>
+                    <input type="password" id="guardPassword" class="w-full bg-white border-2 border-black p-4 font-sans text-sm outline-none" placeholder="Password" required>
                 </div>
-                <button type="submit" class="w-full bg-white text-black py-4 text-xs uppercase tracking-widest font-bold hover:bg-acid transition-colors">
-                    [ INITIALIZE AUTHENTICATION ]
+                <button type="submit" class="w-full bg-black text-white py-4 text-xs uppercase tracking-widest font-bold hover:bg-acid hover:text-black transition-colors">
+                    [ LOGIN / SIGNUP ]
                 </button>
             </form>
-            <div class="relative">
-                <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-zinc-800"></div></div>
-                <div class="relative flex justify-center text-[10px] uppercase font-bold"><span class="bg-zinc-950 px-2 text-zinc-500">or</span></div>
-            </div>
-            <button id="googleAuthBtn" class="w-full border border-zinc-800 text-white py-4 text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-3 hover:bg-zinc-900">
+            <button id="googleAuthBtn" class="w-full border-2 border-black text-black py-4 text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-3 hover:bg-gray-50 bg-white">
                 <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" class="w-4 h-4" alt="Google">
-                [ CONNECT VIA GOOGLE IDENT SYSTEM ]
+                [ SIGN IN WITH GOOGLE ]
             </button>
-            <p class="text-center text-[8px] text-zinc-600 uppercase tracking-widest leading-relaxed">
-                Your data is cryptographically isolated within your local session enclave.
-            </p>
         </div>
     </div>
 
-    <!-- START: Value Prop Section -->
-    <section id="value-proposition" class="py-24 px-6 bg-zinc-950">
+    <!-- Saved Verdicts -->
+    <div class="fixed bottom-6 left-6 z-40">
+        <button id="toggleDrawerBtn" class="w-14 h-14 bg-white hover:bg-acid text-black border-4 border-black rounded-full flex items-center justify-center brutal-shadow-lg transition-transform hover:-translate-y-1">
+            <i data-lucide="history" class="w-6 h-6"></i>
+        </button>
+    </div>
+
+    <div id="drawerOverlay" class="fixed inset-0 bg-black/20 backdrop-blur-xs z-50 hidden transition-opacity duration-300">
+        <div id="drawerContent" class="w-full max-w-md bg-white h-full border-r-4 border-black flex flex-col justify-between p-6 transform -translate-x-full transition-transform duration-300 ease-out">
+            <div class="space-y-6">
+                <div class="flex justify-between items-center border-b-2 border-black pb-4">
+                    <h3 class="serif-title text-2xl font-bold">History</h3>
+                    <button id="closeDrawerBtn" class="hover:bg-acid p-1 border-2 border-black bg-white">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                <div class="relative">
+                    <input type="text" id="vaultQuery" class="w-full border-2 border-black bg-white p-3 text-xs outline-none focus:bg-acid/10" placeholder="Search saved roasts...">
+                </div>
+                <div id="historyList" class="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+                </div>
+            </div>
+            <div class="border-t-2 border-black pt-4 text-center">
+                <p class="text-[10px] uppercase font-bold text-gray-400">Secure Personal Vault</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Value Prop Section -->
+    <section id="value-proposition" class="py-24 px-6 border-t-4 border-black">
         <div class="max-w-4xl mx-auto space-y-12">
-            <div class="text-[10px] font-black uppercase tracking-widest text-zinc-500">// STRATEGIC VALIDATION CORE</div>
-            <h2 class="serif-title text-6xl font-black text-white leading-tight">Why Founders Deploy RoastLab Prior to <span class="bg-acid text-black px-4">Launch.</span></h2>
-            <p class="text-zinc-400 text-xl leading-relaxed">Building a business requires absolute clarity. RoastLab acts as an uncompromised, objective algorithmic advisory board. Instead of relying on passive validation from peers or echo chambers, founders drop their frameworks directly into our engine to stress-test their fundamental market assumptions before committing precious engineering hours and capital.</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-zinc-800 pt-12">
-                <div class="space-y-4">
-                    <div class="text-acid font-black text-2xl">01 //</div>
-                    <h3 class="text-white font-bold uppercase tracking-widest text-sm">Unvarnished Capital Protection</h3>
-                    <p class="text-zinc-500 text-xs">Venture capital is expensive, and bootstrapping is high-risk. RoastLab systematically tears down weak value propositions.</p>
+            <h2 class="serif-title text-huge font-black leading-tight text-center">Professional Honest Feedback.</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 pt-12">
+                <div class="p-6 border-2 border-black bg-white brutal-shadow">
+                    <h3 class="font-bold uppercase text-sm mb-4">Capital Protection</h3>
+                    <p class="text-[#534c44] text-xs">Systematically identify unit-economic flaws before presenting to investors.</p>
                 </div>
-                <div class="space-y-4">
-                    <div class="text-acid font-black text-2xl">02 //</div>
-                    <h3 class="text-white font-bold uppercase tracking-widest text-sm">Accelerated Pivot Mechanics</h3>
-                    <p class="text-zinc-500 text-xs">Instead of spending months waiting for real-world user validation, our model selectors simulate adversarial actions instantly.</p>
+                <div class="p-6 border-2 border-black bg-white brutal-shadow">
+                    <h3 class="font-bold uppercase text-sm mb-4">Pivot Support</h3>
+                    <p class="text-[#534c44] text-xs">Simulate adversarial scenarios to refine your strategy in seconds.</p>
                 </div>
-                <div class="space-y-4">
-                    <div class="text-acid font-black text-2xl">03 //</div>
-                    <h3 class="text-white font-bold uppercase tracking-widest text-sm">Competitive Landscape Mapping</h3>
-                    <p class="text-zinc-500 text-xs">RoastLab breaks open hidden saturation vectors in your targeted niche. Discover how incumbents will react.</p>
+                <div class="p-6 border-2 border-black bg-white brutal-shadow">
+                    <h3 class="font-bold uppercase text-sm mb-4">Market Readiness</h3>
+                    <p class="text-[#534c44] text-xs">Detailed execution metrics mapping to verify if you are ready to launch.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-black text-white py-24 px-6 border-t-4 border-acid">
+    <!-- Global Footer -->
+    <footer class="bg-black text-white py-24 px-6 border-t-4 border-[#73d41d]">
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-16">
             <div class="space-y-6">
-                <div class="serif-title text-4xl font-black">Roast<span class="text-acid">Lab</span></div>
-                <p class="text-xs text-zinc-500 leading-relaxed font-sans">Evaluating operational models and structural execution metrics with absolute algorithmic objectivity since 2026.</p>
-                <div class="flex gap-4">
-                    <i data-lucide="twitter" class="w-5 h-5 text-zinc-500 hover:text-acid cursor-pointer"></i>
-                    <i data-lucide="linkedin" class="w-5 h-5 text-zinc-500 hover:text-acid cursor-pointer"></i>
-                    <i data-lucide="instagram" class="w-5 h-5 text-zinc-500 hover:text-acid cursor-pointer"></i>
-                </div>
+                <div class="serif-title text-4xl font-black">Roast<span class="text-[#73d41d]">Lab</span></div>
+                <p class="text-xs text-gray-500 leading-relaxed">Algorithmic startup evaluation since 2026.</p>
             </div>
             <div class="space-y-6">
-                <h4 class="text-xs uppercase font-black tracking-widest text-acid">// Company</h4>
-                <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-zinc-400">
-                    <li><a href="/manifesto.html" class="hover:text-acid">01/ Our Manifesto</a></li>
-                    <li><a href="/enterprise.html" class="hover:text-acid">02/ Enterprise Pricing</a></li>
-                    <li><a href="/TAP.html" class="hover:text-acid">03/ The Audit Protocol</a></li>
-                    <li><a href="/engin_log.html" class="hover:text-acid">04/ Engineering Logs</a></li>
+                <h4 class="text-xs font-black uppercase text-[#73d41d]">Company</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase text-gray-400">
+                    <li><a href="/manifesto.html" class="hover:text-white">Our Manifesto</a></li>
+                    <li><a href="/enterprise.html" class="hover:text-white">Enterprise</a></li>
+                    <li><a href="/TAP.html" class="hover:text-white">Audit Protocol</a></li>
+                    <li><a href="/engin_log.html" class="hover:text-white">Engineering</a></li>
                 </ul>
             </div>
             <div class="space-y-6">
-                <h4 class="text-xs uppercase font-black tracking-widest text-acid">// Compliance</h4>
-                <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-zinc-400">
-                    <li><a href="/privacy.html" class="hover:text-acid">λ_ Privacy Enclaves</a></li>
-                    <li><a href="/terms.html" class="hover:text-acid">λ_ Terms of Auditing</a></li>
-                    <li><a href="/DCL.html" class="hover:text-acid">λ_ Cryptographic Ledger</a></li>
-                    <li><a href="/Model.html" class="hover:text-acid">λ_ Training Charter</a></li>
-                    <li><a href="/eu_ai.html" class="hover:text-acid">λ_ EU-AI Act Specs</a></li>
+                <h4 class="text-xs font-black uppercase text-[#73d41d]">Legal</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase text-gray-400">
+                    <li><a href="/privacy.html" class="hover:text-white">Privacy</a></li>
+                    <li><a href="/terms.html" class="hover:text-white">Terms</a></li>
+                    <li><a href="/DCL.html" class="hover:text-white">Ledger</a></li>
+                    <li><a href="/Model.html" class="hover:text-white">Charter</a></li>
+                    <li><a href="/eu_ai.html" class="hover:text-white">EU-AI Act</a></li>
                 </ul>
             </div>
             <div class="space-y-6">
-                <h4 class="text-xs uppercase font-black tracking-widest text-acid">// Bulletins</h4>
-                <div class="flex border-2 border-white bg-zinc-900 overflow-hidden">
-                    <input type="email" placeholder="SECURE EMAIL..." class="bg-transparent px-4 py-3 text-[10px] outline-none w-full">
-                    <button class="bg-acid text-black px-6 font-black text-[10px] hover:bg-white transition-colors">ENGAGE</button>
-                </div>
+                <h4 class="text-xs font-black uppercase text-[#73d41d]">Contact</h4>
+                <p class="text-xs text-gray-500">support@kryonara.com</p>
             </div>
         </div>
     </footer>
@@ -608,7 +577,6 @@
 
         const appId = "roastlab-ai";
         let activeUserId = null;
-        let isSaving = false;
         let masterHistory = [];
 
         const form = document.getElementById('roastForm');
@@ -618,11 +586,11 @@
         const lp = document.getElementById('loaderPercent');
 
         const logs = [
-            { text: "> Ingesting conceptual framework tokens... [OK]", delay: 500, progress: 20 },
-            { text: "> Accessing database: Crunchbase market patterns 2026... [CONNECTED]", delay: 1200, progress: 40 },
-            { text: "> Pinging vector registry for duplicate stealth software stacks... [FOUND]", delay: 2000, progress: 60 },
-            { text: "> Simulating regulatory friction paths (SEC / EU-AI Act Framework)... [!]", delay: 2800, progress: 85 },
-            { text: "> Compiling final reconstruction blueprint layout...", delay: 3500, progress: 95 }
+            { text: "> Analyzing business structure...", delay: 500, progress: 20 },
+            { text: "> Evaluating market dynamics...", delay: 1200, progress: 40 },
+            { text: "> Testing unit economics...", delay: 2000, progress: 60 },
+            { text: "> Simulating regulatory risks...", delay: 2800, progress: 85 },
+            { text: "> Finalizing audit report...", delay: 3500, progress: 95 }
         ];
 
         if (form) {
@@ -637,7 +605,7 @@
                 logs.forEach((log) => {
                     setTimeout(() => {
                         const div = document.createElement('div');
-                        div.className = "text-acid animate-pulse";
+                        div.className = "text-black border-b border-gray-100 py-1";
                         div.textContent = log.text;
                         cotLog.appendChild(div);
                         pb.style.width = `${log.progress}%`;
@@ -661,7 +629,7 @@
                 if (user.isAnonymous) {
                     avatar.classList.add('hidden');
                     statusText.classList.remove('hidden');
-                    statusText.innerText = "SECURE LOCAL SANDBOX";
+                    statusText.innerText = "SECURE SANDBOX";
                     proInput.value = "false";
                 } else {
                     avatar.classList.remove('hidden');
@@ -673,7 +641,7 @@
             }
         });
 
-        // REQ-01 Logic
+        // Visitor Overlay
         const overlayFirstVisit = document.getElementById('firstVisitOverlay');
         if (!localStorage.getItem('has_visited_kryonara')) {
             overlayFirstVisit.classList.remove('hidden');
@@ -687,7 +655,7 @@
         document.getElementById('closeFirstVisit').addEventListener('click', dismissFirstVisit);
         document.getElementById('ctaExecuteDeployment').addEventListener('click', dismissFirstVisit);
 
-        // REQ-02 Auth Logic
+        // Auth Logic
         const authGuardModal = document.getElementById('authGuardModal');
         const authGuardForm = document.getElementById('authGuardForm');
         authGuardForm.addEventListener('submit', async (e) => {
@@ -713,7 +681,7 @@
             form.submit();
         });
 
-        // REQ-04/06 UI Logic
+        // UI Helpers
         const avatar = document.getElementById('userAvatar');
         const dropdown = document.getElementById('avatarDropdown');
         avatar.addEventListener('click', () => dropdown.classList.toggle('hidden'));
@@ -725,7 +693,7 @@
             document.getElementById('downloadReport').addEventListener('click', () => window.print());
         }
 
-        // REQ-05 PBD Logic
+        // PBD Logic
         const pbdModal = document.getElementById('pbdModal');
         const pbdForm = document.getElementById('pbdForm');
         document.getElementById('mutateSystemNode')?.addEventListener('click', () => pbdModal.classList.remove('hidden'));
@@ -743,23 +711,23 @@
                 const reportContent = document.getElementById('analysisDashboard').innerText;
                 let pages = [];
                 for(let i=1; i<=10; i++) {
-                    pages.push(`[PAGE ${i}/10] - KRYONARA LABS PBD SECTION ${i}\n------------------------------------------\n\n`);
+                    pages.push(`[PAGE ${i}/10] - PROJECT BRIEF SECTION ${i}\n------------------------------------------\n\n[PRO CONTENT FOR SECTION ${i}]\n\n`);
                 }
-                const content = `ROASTLAB OFFICIAL PROJECT BRIEF DOCUMENT\n========================================\nFILE ID: ${fileName}\nOFFICIAL TARGET: ${email}\nSIGNATURE: ${sig}\n\n${pages.join('\n')}\nFULL ANALYSIS PAYLOAD:\n\n${reportContent}\n\n[EOF // END OF FILE]`;
+                const content = `PROJECT BRIEF DOCUMENT: ${fileName}\n========================================\nTARGET: ${email}\nSIGNATURE: ${sig}\n\n${pages.join('\n')}\nANALYSIS SUMMARY:\n\n${reportContent}`;
                 const blob = new Blob([content], { type: 'text/plain' });
                 const url = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = `${fileName}.pbd.txt`;
+                a.download = `${fileName}.brief.txt`;
                 a.click();
-                alert('[ ANALYSIS PACK COMPILED SUCCESSFUL // DONE ]');
+                alert('Project Brief Exported Successfully');
                 pbdModal.classList.add('hidden');
                 document.getElementById('pbdFormView').classList.remove('hidden');
                 document.getElementById('pbdCompilingView').classList.add('hidden');
             }, 3000);
         });
 
-        // History / Vault
+        // History
         async function refreshHistory() {
             if (!activeUserId) return;
             const snap = await getDocs(collection(db, `artifacts/${appId}/users/${activeUserId}/verdicts`));
@@ -769,11 +737,11 @@
         }
         function renderHistory(list) {
             const container = document.getElementById('historyList');
-            container.innerHTML = list.length ? "" : '<div class="text-xs text-zinc-500 py-8">No results found.</div>';
+            container.innerHTML = list.length ? "" : '<div class="text-xs text-gray-400 py-8">No audits saved yet.</div>';
             list.forEach(item => {
                 const div = document.createElement('div');
-                div.className = "brutal-border border-white bg-zinc-900 p-3 brutal-shadow mb-4";
-                div.innerHTML = `<div class="flex justify-between font-bold text-xs"><span class="text-white">${item.headline}</span><span class="text-acid">${item.score}/100</span></div>`;
+                div.className = "border-2 border-black bg-white p-4 brutal-shadow mb-4";
+                div.innerHTML = `<div class="flex justify-between font-bold text-sm"><span>${item.headline}</span><span class="text-acid">${item.score}</span></div>`;
                 container.appendChild(div);
             });
         }
@@ -793,7 +761,6 @@
 
         lucide.createIcons();
 
-        // Globe frame rotation
         const globeFrames = [`  .-"''"-.\n /        \\\n|  *       |\n \\        /\n  '-.__.-'  `, `  .-"''"-.\n /        \\\n|    *     |\n \\        /\n  '-.__.-'  `, `  .-"''"-.\n /        \\\n|      *   |\n \\        /\n  '-.__.-'  `];
         let frameIdx = 0;
         setInterval(() => {

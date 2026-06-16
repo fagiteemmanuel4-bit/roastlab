@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} // RoastLab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@900&family=JetBrains+Mono:wght@400;700&display=swap">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root { --paper: #f7f5ec; --ink: #0c0806; --acid: #73d41d; }
+        body { background-color: var(--paper); color: var(--ink); font-family: 'JetBrains Mono', monospace; }
+        .serif { font-family: 'Fraunces', serif; }
+        .brutal-border { border: 2px solid var(--ink); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <header class="p-6 md:p-12">
+        <a href="/" class="inline-flex items-center gap-2 brutal-border px-4 py-2 hover:bg-[#73d41d] transition-colors font-bold uppercase text-xs">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Dashboard
+        </a>
+    </header>
+
+    <main class="flex-grow p-6 md:p-12 max-w-4xl mx-auto w-full">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-black text-white py-16 px-6 border-t-4 border-[#73d41d]">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div>
+                <div class="serif text-3xl font-black">Roast<span class="text-[#73d41d]">Lab</span></div>
+                <p class="text-xs text-gray-500 mt-4">Professional startup evaluation ecosystem.</p>
+            </div>
+            <div>
+                <h4 class="text-xs font-black uppercase text-[#73d41d]">Links</h4>
+                <ul class="text-xs space-y-2 mt-4 text-gray-400">
+                    <li><a href="/manifesto.html">Manifesto</a></li>
+                    <li><a href="/terms.html">Terms</a></li>
+                    <li><a href="/privacy.html">Privacy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
